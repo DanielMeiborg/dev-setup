@@ -28,7 +28,7 @@ fi
 
 echo "Using $package_manager"
 
-function install() {
+install() {
     if [ "$package_manager" = "pacman" ]; then
         sudo pacman -S $1 --noconfirm
     elif [ "$package_manager" = "apt" ]; then
@@ -38,7 +38,7 @@ function install() {
     fi
 }
 
-function anounce() {
+anounce() {
     echo ""
     echo "----------------------------------------"
     # in color red and all caps
