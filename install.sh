@@ -92,9 +92,7 @@ git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 
 mkdir -p ~/.config/tmux
 
-touch ~/.config/tmux/tmux.conf
-echo '
-set-option -sa terminal-overrides ",xterm*:Tc"
+echo 'set-option -sa terminal-overrides ",xterm*:Tc"
 set -g mouse on
 
 unbind C-b
@@ -131,9 +129,9 @@ set -g @catppuccin_host "on"
 run "~/.tmux/plugins/tpm/tpm"
 
 bind % split-window -v -c "#{pane_current_path}"
+' >"$HOME/.config/tmux/tmux.conf"
 
-set -g default-shell' "$(which zsh)"
->~/.config/tmux/tmux.conf
+echo 'set -g default-shell' "$(which zsh)" >>"$HOME/.config/tmux/tmux.conf"
 
 anounce "tmux"
 install tmux
