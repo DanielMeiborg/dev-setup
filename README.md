@@ -10,3 +10,10 @@ These include:
 - zoxide
 - nvchad
 - tmux
+
+It currently supports apt and pacman as package managers. It requires sudo, git and curl and base-devel/build-essential to be installed on the system.
+
+To curl-sh the install script, run the following command in your terminal:
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/DanielMeiborg/dev-setup/main/install.sh)"
+```

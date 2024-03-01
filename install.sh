@@ -67,9 +67,6 @@ eval "$(zoxide init zsh)"
 
 anounce "zsh"
 install zsh
-if [ -f /usr/bin/zsh ]; then
-    sudo ln -s /usr/bin/zsh /usr/sbin/zsh
-fi
 
 anounce "oh-my-zsh"
 KEEP_ZSHRC="yes" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -135,8 +132,8 @@ run "~/.tmux/plugins/tpm/tpm"
 
 bind % split-window -v -c "#{pane_current_path}"
 
-set -g default-shell "/usr/sbin/zsh"
-' >~/.config/tmux/tmux.conf
+set -g default-shell' "$(which zsh)"
+>~/.config/tmux/tmux.conf
 
 anounce "tmux"
 install tmux
