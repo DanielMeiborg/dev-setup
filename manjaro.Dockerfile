@@ -10,13 +10,18 @@ RUN echo "root:password" | chpasswd
 # Add user "manjaro" with password "password" with sudo privileges
 RUN useradd -m manjaro
 RUN echo "manjaro:password" | chpasswd
-RUN echo 'manjaro ALL=(ALL:ALL) ALL' | sudo EDITOR='tee -a' visudo
+RUN echo 'manjaro ALL=(ALL) NOPASSWD:ALL' | sudo EDITOR='tee -a' visudo
 
-# Execute setup.sh
-COPY setup.sh /usr/local/bin/setup.sh
-RUN chmod +x /usr/local/bin/setup.sh
-RUN /usr/local/bin/setup.sh manjarou
+COPY install.sh /usr/local/bin/install.sh
+RUN chmod +x /usr/local/bin/install.sh
+RUN chown manjaro:manjaro /usr/local/bin/install.sh
 
 # Set the default user
 USER manjaro
 WORKDIR /home/manjaro
+
+RUN /usr/local/bin/install.sh pacman y
+
+ENV LANG C.UTF-8
+
+CMD ["zsh"]
